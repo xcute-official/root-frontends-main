@@ -1,3 +1,4 @@
+import { AuthContext } from '../contexts/AuthContext';
 import Footer from './_components/Footer';
 import PrimeNav from './_components/PrimeNav';
 import './globals.css';
@@ -13,19 +14,21 @@ interface LayoutProps {
 }
 const Layout = ({children}: LayoutProps)=>{
     return (
-        <html lang='en'>
-            <body className='text-foreground bg-background'>
-                <header className='sticky w-screen'>
-                    <PrimeNav />
-                </header>
-                <main>
-                    {children}
-                </main>
-                <footer>
-                    <Footer />
-                </footer>
-            </body>
-        </html>
+        <AuthContext>
+            <html lang='en'>
+                <body className='text-foreground bg-background'>
+                    <header className='sticky w-screen'>
+                        <PrimeNav />
+                    </header>
+                    <main>
+                        {children}
+                    </main>
+                    <footer>
+                        <Footer />
+                    </footer>
+                </body>
+            </html>
+        </AuthContext>
     )
 }
 export default Layout;

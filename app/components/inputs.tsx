@@ -28,7 +28,7 @@ export const FormInput: React.FC<FormInputProps> = ({
             )}
             <div className="mt-2">
                 <input type={type} disabled={disabled} {...register(id, { required })} autoComplete={id} className={clsx(
-                    'w-full px-4 py-2 rounded-md border focus:border-none bg-transparent text-foreground'
+                    'w-full px-2 py-1 rounded-md border focus:border-none bg-transparent text-foreground'
                 )} />
             </div>
         </div>
@@ -116,7 +116,7 @@ export const FormTextarea: React.FC<FormTextareaProps> = ({
             <div className="mt-2">
                 <textarea disabled={disabled} {...register(id, { required })} autoComplete={id} className={clsx(
                     'w-full px-4 py-2 rounded-md border focus:border-none bg-transparent text-foreground',
-                    doResize && 'resize-none'
+                    !doResize && 'resize-none'
                 )}></textarea>
             </div>
         </div>

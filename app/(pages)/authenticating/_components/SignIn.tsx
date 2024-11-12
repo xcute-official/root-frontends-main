@@ -4,15 +4,15 @@ import ErrorMessage from '@/app/components/error-message';
 import { FormInput, FormPasswordInput } from '@/app/components/inputs';
 import SuccessMessage from '@/app/components/success-message';
 import { ICON_S_SIZE } from '@/app/constants';
-import { SignupSchema } from '@/app/schemas/auth';
+import { SigninSchema } from '@/app/schemas/auth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import React, { useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { TbLoader } from 'react-icons/tb';
-import { signup } from '@/app/actions/auth';
+import { signin, signup } from '@/app/actions/auth';
 
-const SignUp = () => {
+const SignIn = () => {
 
     const router = useRouter();
 
@@ -24,21 +24,21 @@ const SignUp = () => {
         setIsLoading(true);
         setSuccess('');
         setError('');
-        const validation = SignupSchema.safeParse(data);
+        const validation = SigninSchema.safeParse(data);
         if(!validation.success){
             setError('Invalid data!');
             return;
         }
-        signup(data).then((response)=>{
-            console.log(`RESPONSE_ `, response);
+        signin(data).then((response)=>{
             if(response?.error){
                 setError(response.error);
             }else if(response?.success){
                 setSuccess(response.success);
+                router.push(`/lggdn/user/${response.data.username}/`);
             }else{
                 setError("Unknown error");
             }
-        }).catch(()=>setError("Unknown error, please try again")).finally(()=>setIsLoading(false))
+        }).catch((error)=>{console.error(error);setError("Unknown error, please try again")}).finally(()=>setIsLoading(false))
     }
     const {
         register,
@@ -48,20 +48,18 @@ const SignUp = () => {
         }
     } = useForm<FieldValues>({
         defaultValues: {
-            username: 'test',
-            password: 'anjali',
-            email: 'test@gmail.com'
+            username: '',
+            password: ''
         }
     });
   return (
-    <div>
+    <div className="flex flex-col gap-6">
         <div>
-            <h1 className='font-bold text-4xl'>Signup</h1>
+            <h1 className='font-bold text-4xl'>SignIn</h1>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
             <div className='flex flex-col gap-4'>
                 <FormInput placeholder='john doe' register={register} errors={errors} id='username'/>
-                <FormInput placeholder='john.doe@gmail.com' register={register} errors={errors} id='email'/>
                 <FormPasswordInput placeholder='iloveyou' register={register} errors={errors} id='password'/>
             </div>
             <div>
@@ -73,11 +71,11 @@ const SignUp = () => {
                     isLoading ? (
                         <div className='flex items-center gap-2'>
                             <TbLoader className={ICON_S_SIZE}/>
-                            <span>Signing up</span>
+                            <span>Signing In</span>
                         </div>
                     ) : (
                         <div className='flex items-center gap-2'>
-                            <span>Signup</span>
+                            <span>SignIn</span>
                         </div>
                     )
                 }
@@ -86,8 +84,8 @@ const SignUp = () => {
         <div>
             <Link href={'/'}>
                 <div>
-                    <span>Already have an account? </span>
-                    <span>signin</span>
+                    <span>Don't have an account? </span>
+                    <span>sign up</span>
                 </div>
             </Link>
         </div>
@@ -95,4 +93,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default SignIn;
