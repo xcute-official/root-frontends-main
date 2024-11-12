@@ -1,0 +1,1 @@
+export const ICON_S_SIZE = 'w-6 h-6'
