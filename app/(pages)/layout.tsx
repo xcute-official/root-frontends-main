@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { AuthContext } from '../contexts/AuthContext';
 import Footer from './_components/Footer';
 import PrimeNav from './_components/PrimeNav';
@@ -20,7 +21,9 @@ const Layout = ({children}: LayoutProps)=>{
                     <header className='sticky w-screen'>
                         <PrimeNav />
                     </header>
-                    <main>
+                    <main className={clsx(
+                        'p-4'
+                    )}>
                         {children}
                     </main>
                     <footer>

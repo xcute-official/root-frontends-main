@@ -11,6 +11,7 @@ import React, { useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { TbLoader } from 'react-icons/tb';
 import { signup } from '@/app/actions/auth';
+import clsx from 'clsx';
 
 const SignUp = () => {
 
@@ -48,21 +49,21 @@ const SignUp = () => {
         }
     } = useForm<FieldValues>({
         defaultValues: {
-            username: 'test',
-            password: 'anjali',
-            email: 'test@gmail.com'
+            username: '',
+            password: '',
+            email: ''
         }
     });
   return (
-    <div>
+    <div className='flex flex-col gap-4'>
         <div>
             <h1 className='font-bold text-4xl'>Signup</h1>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
             <div className='flex flex-col gap-4'>
-                <FormInput placeholder='john doe' register={register} errors={errors} id='username'/>
-                <FormInput placeholder='john.doe@gmail.com' register={register} errors={errors} id='email'/>
-                <FormPasswordInput placeholder='iloveyou' register={register} errors={errors} id='password'/>
+                <FormInput label='Username' placeholder='john doe' register={register} errors={errors} id='username'/>
+                <FormInput label='Email' placeholder='john.doe@gmail.com' register={register} errors={errors} id='email'/>
+                <FormPasswordInput label='Password' placeholder='iloveyou' register={register} errors={errors} id='password'/>
             </div>
             <div>
                 <ErrorMessage message={error} />
@@ -72,7 +73,7 @@ const SignUp = () => {
                 {
                     isLoading ? (
                         <div className='flex items-center gap-2'>
-                            <TbLoader className={ICON_S_SIZE}/>
+                            <TbLoader className={clsx(ICON_S_SIZE, 'animate-spin')}/>
                             <span>Signing up</span>
                         </div>
                     ) : (
@@ -84,7 +85,7 @@ const SignUp = () => {
             </Button>
         </form>
         <div>
-            <Link href={'/'}>
+            <Link href={'/authenticating/signin'}>
                 <div>
                     <span>Already have an account? </span>
                     <span>signin</span>

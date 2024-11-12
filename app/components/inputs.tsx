@@ -24,10 +24,10 @@ export const FormInput: React.FC<FormInputProps> = ({
     return (
         <div>
             {label && (
-                <label className="text-sm font-bold" htmlFor={id}>{label}</label>
+                <label className="text-sm text-slate-800" htmlFor={id}>{label}</label>
             )}
             <div className="mt-2">
-                <input type={type} disabled={disabled} {...register(id, { required })} autoComplete={id} className={clsx(
+                <input placeholder={placeholder} type={type} disabled={disabled} {...register(id, { required })} autoComplete={id} className={clsx(
                     'w-full px-2 py-1 rounded-md border focus:border-none bg-transparent text-foreground'
                 )} />
             </div>
@@ -58,13 +58,13 @@ export const FormPasswordInput: React.FC<FormPasswordInputProps> = ({
     return (
         <div>
             {label && (
-                <label className="text-sm font-bold" htmlFor={id}>{label}</label>
+                <label className="text-sm text-slate-800" htmlFor={id}>{label}</label>
             )}
             <div className="mt-1 relative">
-                <input type={type} disabled={disabled} {...register(id, { required })} autoComplete={id} className={clsx(
+                <input placeholder={placeholder} type={type} disabled={disabled} {...register(id, { required })} autoComplete={id} className={clsx(
                     'w-full px-2 py-1 rounded-md border focus:border-none bg-transparent text-foreground'
                 )} />
-                <span className={clsx(
+                <span onClick={()=>setType(type==='password'?'text':'password')} className={clsx(
                     "absolute top-1 right-2",
                 )}>
                     {

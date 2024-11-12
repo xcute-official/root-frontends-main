@@ -26,6 +26,18 @@ model User {
   phoneNumVerified DateTime?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+
+
+  posts Post[] @relation("UserPosts")
+
+}
+model Post {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  creatorId String @unique @db.ObjectId
+  creator User @relation("UserPosts", fields: [creatorId], references: [id])
+  slug String @unique
+  body Json
 }
 
 

@@ -14,9 +14,9 @@ export const Button: React.FC<ButtonProps> = ({
 })=>{
     return (
         <button className={clsx(
-            "flex items-center justify-center p-2 rounded-md",
+            "flex items-center justify-center px-4 py-1 rounded-md",
             fullWidth && 'w-full',
-            'bg-foreground text-background font-bold border rounded-md px-4 py-2'
+            'bg-foreground text-background border text-sm font-bold rounded-md px-4 py-2'
         )} type={type} disabled={disabled} onClick={onClick}>
             {children}
         </button>

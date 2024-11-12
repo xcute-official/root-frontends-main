@@ -32,7 +32,7 @@ const PrimeNav = () => {
         <span>xcute</span>
       </div>
       <div className='flex items-center gap-4'>
-        <ThemeToggle/>
+        <ThemeToggle />
         <ul className='flex items-center gap-4'>
           {pages.map((page: Page, index: number)=>(
             <li key={index}>

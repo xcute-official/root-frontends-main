@@ -11,6 +11,7 @@ import React, { useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { TbLoader } from 'react-icons/tb';
 import { signin, signup } from '@/app/actions/auth';
+import clsx from 'clsx';
 
 const SignIn = () => {
 
@@ -59,8 +60,8 @@ const SignIn = () => {
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
             <div className='flex flex-col gap-4'>
-                <FormInput placeholder='john doe' register={register} errors={errors} id='username'/>
-                <FormPasswordInput placeholder='iloveyou' register={register} errors={errors} id='password'/>
+                <FormInput label='Username' placeholder='john doe' register={register} errors={errors} id='username'/>
+                <FormPasswordInput label='Password' placeholder='password' register={register} errors={errors} id='password'/>
             </div>
             <div>
                 <ErrorMessage message={error} />
@@ -70,7 +71,7 @@ const SignIn = () => {
                 {
                     isLoading ? (
                         <div className='flex items-center gap-2'>
-                            <TbLoader className={ICON_S_SIZE}/>
+                            <TbLoader className={clsx(ICON_S_SIZE, 'animate-spin')}/>
                             <span>Signing In</span>
                         </div>
                     ) : (
@@ -82,7 +83,7 @@ const SignIn = () => {
             </Button>
         </form>
         <div>
-            <Link href={'/'}>
+            <Link href={'/authenticating/signup'}>
                 <div>
                     <span>Don't have an account? </span>
                     <span>sign up</span>
