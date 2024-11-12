@@ -1,10 +1,14 @@
 "use client";
 import { EditorContent, JSONContent, useEditor } from "@tiptap/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import EditorExtensions from "@/app/components/richTextInput/Extensions";
 import Toolbar from "@/app/components/richTextInput/Toolbar";
 import NoteContentToolbar from "./NoteContentToolbar";
-export const NoteContent= ()=>{
+import { useDebounce } from "@/app/hooks/useDebounce";
+import { useParams } from "next/navigation";
+import { saveNote } from "@/app/actions/notes";
+export const NoteContent = ()=>{
+    const {id, slug} = useParams();
     const [content, setContent] = useState<JSONContent | null>(null);
     const editor = useEditor({
         extensions: EditorExtensions,
@@ -19,7 +23,18 @@ export const NoteContent= ()=>{
             }
         },
         immediatelyRender: false
-    })
+    });
+    const debouncedContent = useDebounce(content, 1000);
+    useEffect(()=>{
+        if(!debouncedContent) return;
+        saveNote(id as string, debouncedContent).then((response)=>{
+            if(response.success){
+                console.log("ok");
+            }else{
+                console.log("not ok");
+            }
+        })
+    }, [debouncedContent]);
     return (
         <div className="w-full" id="NoteContent">
             <div className="w-full flex absolute top-20 right-0">

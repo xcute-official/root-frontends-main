@@ -26,9 +26,6 @@ model User {
   phoneNumVerified DateTime?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-
-
   posts Post[] @relation("UserPosts")
 
 }

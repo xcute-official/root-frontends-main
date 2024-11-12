@@ -6,6 +6,32 @@ import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { ICON_S_SIZE } from "../constants";
 import { TbEye, TbEyeOff } from "react-icons/tb";
 
+
+interface InputProps {
+
+    type?: string;
+    placeholder?: string;
+    label?: string;
+
+    disabled?: boolean;
+}
+
+export const Input: React.FC<InputProps> = ({
+    
+})=>{
+    return (
+        <div>
+            <div>
+                <input type="text" className={clsx(
+                    'w-full px-2 py-1 rounded-md border focus:border-none bg-transparent text-foreground'
+                )} />
+            </div>
+        </div>
+    )
+}
+
+
+
 interface FormInputProps {
     id: string;
     register: UseFormRegister<FieldValues>;
@@ -111,10 +137,10 @@ export const FormTextarea: React.FC<FormTextareaProps> = ({
     return (
         <div>
             {label && (
-                <label className="text-sm font-bold" htmlFor={id}>{label}</label>
+                <label className="text-sm text-slate-800" htmlFor={id}>{label}</label>
             )}
             <div className="mt-2">
-                <textarea disabled={disabled} {...register(id, { required })} autoComplete={id} className={clsx(
+                <textarea spellCheck="false" disabled={disabled} {...register(id, { required })} autoComplete={id} className={clsx(
                     'w-full px-4 py-2 rounded-md border focus:border-none bg-transparent text-foreground',
                     !doResize && 'resize-none'
                 )}></textarea>
