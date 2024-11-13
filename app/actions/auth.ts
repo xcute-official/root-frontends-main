@@ -29,7 +29,10 @@ export const signout = async ()=>{
             success: 'LoggedOut'
         }
     }catch(error){
-        error: 'Log out error'
+        console.log(error);
+        return {
+            error: "internal server error"
+        }
     }
 }
 export const signin = async (data: FieldValues)=>{
@@ -39,7 +42,7 @@ export const signin = async (data: FieldValues)=>{
             error: "Invalid data"
         }
     }
-    const {username, password, code} = validation.data;
+    const {username, password} = validation.data;
 
     try{
         const user = await getUserByUsername(username);
@@ -106,6 +109,11 @@ export const signup = async (data: FieldValues)=>{
                 passwordHash: passwordHash
             }
         });
+        if(!newUser){
+            return {
+                error: "User not created"
+            }
+        }
         return {
             success: "successful for account creation"
         }

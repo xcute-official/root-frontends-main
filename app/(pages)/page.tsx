@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'next/link'
-import Modal from '../components/modal'
 const page = () => {
   return (
     <div className='w-full'>

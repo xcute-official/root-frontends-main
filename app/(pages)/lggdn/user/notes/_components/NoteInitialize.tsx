@@ -24,7 +24,6 @@ const NoteInitialize = () => {
         formState: {
             errors
         },
-        getValues,
         watch
     } = useForm<FieldValues>({
         defaultValues: {
@@ -76,7 +75,7 @@ const NoteInitialize = () => {
             <div className='flex flex-col gap-4'>
                 <FormInput disabled={isLoading} label='Title' register={register} errors={errors} id='title' />
                 <FormTextarea disabled={isLoading} label='Description' register={register} errors={errors} id='description' />
-                <ImageLinkInput watchValues={watch} disabled={isLoading} label='Image link' register={register} errors={errors} id='imageLink' getValues={getValues} />
+                <ImageLinkInput watchValues={watch} disabled={isLoading} label='Image link' register={register} errors={errors} id='imageLink' />
             </div>
             <div>
                 <ErrorMessage message={error} />

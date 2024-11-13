@@ -1,7 +1,6 @@
 "use client";
 import { useSession } from '@/app/contexts/AuthContext';
 
-import React from 'react'
 
 const User = () => {
     const session = useSession();
