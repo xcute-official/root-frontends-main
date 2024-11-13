@@ -13,7 +13,7 @@ interface NoteContentToolbarProps {
 }
 const buttons_class = "p-1 rounded-lg cursor-pointer";
 const icons_class = `${ICON_XS_SIZE}`;
-const on_active_class = "";
+const on_active_class = "bg-foreground text-background";
 const NoteContentToolbar: React.FC<NoteContentToolbarProps> = ({
   editor,
   savingState,
@@ -116,6 +116,11 @@ const NoteContentToolbar: React.FC<NoteContentToolbarProps> = ({
           )}><LuUndo className={clsx(
             icons_class
         )}/></button>
+        <button 
+          onClick={()=>editor.chain().focus().setHighlight('yellow').run()} 
+          className={clsx(
+            buttons_class
+          )}>n</button>
         <button 
           onClick={()=>editor.chain().focus().redo().run()} 
           disabled={!editor.can().chain().focus().redo().run()} 

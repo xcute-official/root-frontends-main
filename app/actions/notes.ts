@@ -7,15 +7,18 @@ import { getSession } from "./auth";
 import { getUserById } from "../data/user";
 
 export const saveNote = async (id: string, content: JSONContent)=>{
+    if(id.length<5){
+        return {
+            error: 'error'
+        }
+    }
     try{
-        const response = await db.post.update({
+        const response = await db.note.update({
             where: {
                 id
-            },
+            }, 
             data: {
-                body: {
-                    content: content
-                }
+                content
             }
         });
         if(!response){
@@ -49,17 +52,15 @@ export const initNote = async (data: FieldValues)=>{
                 error: "User doesn't exist"
             }
         }
-        const createNote = await db.post.create({
+        const createNote = await db.note.create({
             data: {
-                body: {
-                    title: title,
-                    description: description,
-                    imageLink: imageLink
-                },
-                slug: slug,
+                title,
+                description, 
+                slug,
+                imageLink,
                 creator: {
                     connect: {
-                        id: getUser?.id
+                        id: getUser.id
                     }
                 }
             },

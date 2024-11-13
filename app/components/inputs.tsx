@@ -1,16 +1,39 @@
 "use client";
 
 import clsx from "clsx";
-import { useState } from "react";
+import React, { useState } from "react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { ICON_S_SIZE } from "../constants";
 import { TbEye, TbEyeOff } from "react-icons/tb";
 
 
 
+interface InputProps {
+    label?: string;
+    disabled?: boolean;
+    id: string;
+    placeholder?: string;
+    onChange: (value: string)=>void;
+}
 
-
-
+export const Input: React.FC<InputProps> = ({
+    label, disabled, id, placeholder, onChange
+})=>{
+   return (
+        <div className="">
+           {
+               label && (
+                   <label htmlFor={id}>{label}</label>
+               )
+           }
+           <div className="">
+               <input type="text" id={id} placeholder={placeholder} onChange={(e)=>onChange(e.target.value)} className={clsx(
+                    'w-full px-2 py-1 rounded-md border focus:border-none bg-transparent text-foreground'
+               )}/>
+           </div>
+        </div>
+    )
+}
 
 
 interface FormInputProps {

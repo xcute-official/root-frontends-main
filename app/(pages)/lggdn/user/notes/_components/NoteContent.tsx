@@ -51,7 +51,7 @@ export const NoteContent = ()=>{
                             <label className="text-white">Image link</label>
                             <input spellCheck="false" type="text" className={clsx(
                                 'w-full px-4 py-2 rounded-md border focus:border-none text-white bg-transparent text-foreground'
-                            )} onChange={(e)=>editor?.chain().setImage({src: e.target.value}).run()}/>
+                            )} onChange={(e)=>editor?.chain().setCustomImage({src: e.target.value}).run()}/>
                         </div>
                     )
                 }

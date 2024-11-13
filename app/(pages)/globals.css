@@ -37,7 +37,9 @@ body{
         @apply text-xl
     }
     code{
-        @apply bg-slate-700 text-white p-1 text-xs rounded-md
+        @apply bg-slate-700 text-white p-1 text-sm rounded-md
     }
-        
+    p {
+        @apply flex items-center gap-1
+    }    
 }

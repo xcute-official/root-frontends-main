@@ -17,6 +17,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
   return (
     <div className=''>
       <div className='flex items-center gap-2'>
+
         <button 
           onClick={()=>editor.chain().focus().toggleBold().run()} 
           disabled={!editor.can().chain().focus().toggleBold().run()} 
