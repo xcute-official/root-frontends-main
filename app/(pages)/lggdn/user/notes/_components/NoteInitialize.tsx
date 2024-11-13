@@ -5,7 +5,6 @@ import React from 'react'
 import { Button } from '@/app/components/buttons';
 import { FieldValues, useForm } from 'react-hook-form';
 import { SubmitHandler } from 'react-hook-form';
-import { SigninSchema } from '@/app/schemas/auth';
 import { useState } from 'react';
 import ErrorMessage from '@/app/components/error-message';
 import SuccessMessage from '@/app/components/success-message';
@@ -73,7 +72,7 @@ const NoteInitialize = () => {
         <div>
             <h1>initialize Note</h1>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
             <div className='flex flex-col gap-4'>
                 <FormInput disabled={isLoading} label='Title' register={register} errors={errors} id='title' />
                 <FormTextarea disabled={isLoading} label='Description' register={register} errors={errors} id='description' />

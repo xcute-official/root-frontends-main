@@ -7,28 +7,9 @@ import { ICON_S_SIZE } from "../constants";
 import { TbEye, TbEyeOff } from "react-icons/tb";
 
 
-interface InputProps {
 
-    type?: string;
-    placeholder?: string;
-    label?: string;
 
-    disabled?: boolean;
-}
 
-export const Input: React.FC<InputProps> = ({
-    
-})=>{
-    return (
-        <div>
-            <div>
-                <input type="text" className={clsx(
-                    'w-full px-2 py-1 rounded-md border focus:border-none bg-transparent text-foreground'
-                )} />
-            </div>
-        </div>
-    )
-}
 
 
 
@@ -54,7 +35,8 @@ export const FormInput: React.FC<FormInputProps> = ({
             )}
             <div className="mt-2">
                 <input placeholder={placeholder} type={type} disabled={disabled} {...register(id, { required })} autoComplete={id} className={clsx(
-                    'w-full px-2 py-1 rounded-md border focus:border-none bg-transparent text-foreground'
+                    'w-full px-2 py-1 rounded-md border focus:border-none bg-transparent text-foreground',
+                    errors && 'text-red-500'
                 )} />
             </div>
         </div>
@@ -88,7 +70,8 @@ export const FormPasswordInput: React.FC<FormPasswordInputProps> = ({
             )}
             <div className="mt-1 relative">
                 <input placeholder={placeholder} type={type} disabled={disabled} {...register(id, { required })} autoComplete={id} className={clsx(
-                    'w-full px-2 py-1 rounded-md border focus:border-none bg-transparent text-foreground'
+                    'w-full px-2 py-1 rounded-md border focus:border-none bg-transparent text-foreground',
+                    errors && 'text-rose-500'
                 )} />
                 <span onClick={()=>setType(type==='password'?'text':'password')} className={clsx(
                     "absolute top-1 right-2",
@@ -140,9 +123,10 @@ export const FormTextarea: React.FC<FormTextareaProps> = ({
                 <label className="text-sm text-slate-800" htmlFor={id}>{label}</label>
             )}
             <div className="mt-2">
-                <textarea spellCheck="false" disabled={disabled} {...register(id, { required })} autoComplete={id} className={clsx(
+                <textarea spellCheck="false" placeholder={placeholder} disabled={disabled} {...register(id, { required })} autoComplete={id} className={clsx(
                     'w-full px-4 py-2 rounded-md border focus:border-none bg-transparent text-foreground',
-                    !doResize && 'resize-none'
+                    !doResize && 'resize-none',
+                    errors && 'text-rose-500'
                 )}></textarea>
             </div>
         </div>

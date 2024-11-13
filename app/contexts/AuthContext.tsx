@@ -1,16 +1,12 @@
 "use client";
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { getSession } from '../actions/auth';
-import { JwtPayload } from 'jsonwebtoken';
+
 import { SessionType } from '../types';
 interface AuthContextProps {
     children: React.ReactNode;
 }
 
-
-interface SessionContextType {
-    session: SessionType | undefined | null;
-}
 
 
 const SessionContext = createContext<SessionType | null | undefined>(null);
@@ -32,6 +28,9 @@ export const AuthContext: React.FC<AuthContextProps> = ({children}) => {
         </SessionContext.Provider>
     );
 }
+
+
+
 export const useSession = ()=>{
     const context = useContext(SessionContext);
     if(context===undefined){

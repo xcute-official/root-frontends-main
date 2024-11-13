@@ -1,26 +1,30 @@
 "use client";
-import React from 'react';
 import { Editor } from '@tiptap/react';
-import { TbBlockquote, TbBold, TbCode, TbH1, TbH3, TbH5, TbHeading, TbItalic, TbSourceCode, TbStrikethrough } from 'react-icons/tb';
-import { ICON_S_SIZE } from '@/app/constants';
+import { TbBlockquote, TbBold, TbCode, TbH1, TbH3, TbH5, TbImageInPicture, TbItalic, TbLoader, TbSourceCode, TbStrikethrough } from 'react-icons/tb';
+
 import clsx from 'clsx';
-import { IconsManifest } from 'react-icons';
-import { CiUndo } from 'react-icons/ci';
 import { LuRedo, LuUndo } from 'react-icons/lu';
 import { ICON_XS_SIZE } from '@/app/constants';
 interface NoteContentToolbarProps {
   editor: Editor | null;
+  savingState: boolean | null;
+  setModalState: (state: string)=>void;
+  setShow: (state: boolean)=>void;
 }
 const buttons_class = "p-1 rounded-lg cursor-pointer";
 const icons_class = `${ICON_XS_SIZE}`;
 const on_active_class = "";
 const NoteContentToolbar: React.FC<NoteContentToolbarProps> = ({
-  editor
+  editor,
+  savingState,
+  setModalState,
+  setShow
 }) => {
   if(!editor){
     return null;
   }
   return (
+
     <div className='py-2 px-4 rounded-full border mx-auto'>
       <div className='flex items-center gap-4'>
         <button 
@@ -121,11 +125,41 @@ const NoteContentToolbar: React.FC<NoteContentToolbarProps> = ({
             icons_class
         )}/></button>
         <button 
+          onClick={()=>{
+            setShow(true);
+            setModalState('imageLink')
+          }} 
+          className={clsx(
+            buttons_class
+          )}><TbImageInPicture className={clsx(
+            icons_class
+        )}/></button>
+        <button 
           onClick={()=>editor.chain().focus().redo().run()} 
           disabled={!editor.can().chain().focus().redo().run()} 
           className={clsx(
             'flex items-center gap-2 text-sm'
-          )}><span>saved..</span>
+          )}><div>{
+            savingState && (
+              <div className='flex items-center gap-2 text-sm'>
+                <TbLoader className={clsx(ICON_XS_SIZE, 'animate-spin')}/>
+                <span>saving</span>
+              </div>
+            )
+          }{
+            savingState===null && (
+              <div className='flex items-center gap-2 text-sm'>
+                <span>not saved</span>
+              </div>
+            )
+          }{
+            savingState===false && (
+              <div className='flex items-center gap-2 text-sm'>
+                <span>saved</span>
+              </div>
+            )
+          }
+          </div>
         </button>
       </div>
     </div>

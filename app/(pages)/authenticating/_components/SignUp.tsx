@@ -5,7 +5,6 @@ import { FormInput, FormPasswordInput } from '@/app/components/inputs';
 import SuccessMessage from '@/app/components/success-message';
 import { ICON_S_SIZE } from '@/app/constants';
 import { SignupSchema } from '@/app/schemas/auth';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import React, { useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
@@ -15,7 +14,6 @@ import clsx from 'clsx';
 
 const SignUp = () => {
 
-    const router = useRouter();
 
     const [error, setError] = useState<string | undefined>('');
     const [success, setSuccess] = useState<string | undefined>('');

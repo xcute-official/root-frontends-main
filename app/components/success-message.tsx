@@ -1,5 +1,5 @@
 import React from 'react'
-import { TbCircleCheck, TbExclamationCircle } from 'react-icons/tb';
+import { TbCircleCheck } from 'react-icons/tb';
 import { ICON_S_SIZE } from '../constants';
 interface SuccessMessageProps {
   message?: string;

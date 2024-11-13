@@ -1,11 +1,9 @@
 "use client";
 import React from 'react';
 import { Editor } from '@tiptap/react';
-import { TbBlockquote, TbBold, TbCode, TbH1, TbH3, TbH5, TbHeading, TbItalic, TbSourceCode, TbStrikethrough } from 'react-icons/tb';
+import { TbBlockquote, TbBold, TbCode, TbH1, TbH3, TbH5, TbItalic, TbSourceCode, TbStrikethrough } from 'react-icons/tb';
 import { ICON_S_SIZE } from '@/app/constants';
 import clsx from 'clsx';
-import { IconsManifest } from 'react-icons';
-import { CiUndo } from 'react-icons/ci';
 import { LuRedo, LuUndo } from 'react-icons/lu';
 interface ToolbarProps {
   editor: Editor | null;

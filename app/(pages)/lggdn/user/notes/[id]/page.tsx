@@ -1,13 +1,7 @@
 import React from 'react';
-import { NoteContent } from '../_components/NoteContent';
 import NoteInitialize from '../_components/NoteInitialize';
-interface PageProps {
-    params: {
-        id: string;
-    }
-}
-const page = async ({params}: PageProps) => {
-    const {id} = await params;
+
+const page = async () => {
   return (
     <div className='w-full'>
       <section className='w-full'>

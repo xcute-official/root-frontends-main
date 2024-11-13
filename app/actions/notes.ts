@@ -4,7 +4,7 @@ import { NoteInitSchema } from "../schemas/notes";
 import { db } from "../libs/db";
 import { JSONContent } from "@tiptap/react";
 import { getSession } from "./auth";
-import { getUserById, getUserByUsername } from "../data/user";
+import { getUserById } from "../data/user";
 
 export const saveNote = async (id: string, content: JSONContent)=>{
     try{
@@ -24,6 +24,7 @@ export const saveNote = async (id: string, content: JSONContent)=>{
         console.log("UPDATED_RESPONSE: ", response);
         return {success: "ok"};
     }catch(error){
+        console.log(error);
         return {error: "not saved"}
     }
 }
@@ -73,7 +74,7 @@ export const initNote = async (data: FieldValues)=>{
             redirectedTo: `/lggdn/user/notes/${createNote.id}/${createNote.slug}`
         }
     }catch(error){
-        console.error(error);
+        console.log(error);
         return {
             error: "Internal server error"
         }

@@ -1,6 +1,4 @@
 
-import React, { useState } from 'react'
-import { JSONContent } from '@tiptap/react';
 import { NoteContent } from '../../_components/NoteContent';
 
 

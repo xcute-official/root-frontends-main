@@ -7,10 +7,10 @@ import { ICON_S_SIZE } from '@/app/constants';
 import { SigninSchema } from '@/app/schemas/auth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { TbLoader } from 'react-icons/tb';
-import { signin, signup } from '@/app/actions/auth';
+import { signin } from '@/app/actions/auth';
 import clsx from 'clsx';
 
 const SignIn = () => {
@@ -85,7 +85,7 @@ const SignIn = () => {
         <div>
             <Link href={'/authenticating/signup'}>
                 <div>
-                    <span>Don't have an account? </span>
+                    <span>Don&apo;t have an account? </span>
                     <span>sign up</span>
                 </div>
             </Link>

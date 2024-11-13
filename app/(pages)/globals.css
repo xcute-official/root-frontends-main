@@ -9,6 +9,9 @@ body,
     height: 100%;
     overflow: hidden;
 }
+body{
+    overflow-y: scroll;
+}
 
 @layer base{
     html{
@@ -34,7 +37,7 @@ body,
         @apply text-xl
     }
     code{
-        @apply bg-slate-700 p-1 text-xs rounded-md
+        @apply bg-slate-700 text-white p-1 text-xs rounded-md
     }
-    
+        
 }

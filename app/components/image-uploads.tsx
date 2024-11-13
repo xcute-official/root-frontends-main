@@ -1,7 +1,7 @@
 "use client";
 
 import { FieldErrors, FieldValue, FieldValues, UseFormGetValues, UseFormRegister, UseFormWatch } from "react-hook-form";
-import { FormInput, Input } from "./inputs";
+
 import Image from "next/image";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
@@ -45,11 +45,3 @@ export const ImageLinkInput: React.FC<ImageLinkInputProps> = ({
 }
 
 
-
-export const ImageInput = ()=>{
-    return (
-        <div>
-
-        </div>
-    )
-}

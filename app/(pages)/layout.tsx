@@ -18,11 +18,11 @@ const Layout = ({children}: LayoutProps)=>{
         <AuthContext>
             <html lang='en'>
                 <body className='text-foreground bg-background'>
-                    <header className='sticky w-screen'>
+                    <header className='fixed top-0 left-0 flex items-center w-screen h-14'>
                         <PrimeNav />
                     </header>
                     <main className={clsx(
-                        'p-4'
+                        'p-4 mt-14'
                     )}>
                         {children}
                     </main>

@@ -1,9 +1,8 @@
 "use client";
 import { FormInput, FormTextarea } from '@/app/components/inputs';
-import { register } from 'module';
-import { errorToJSON } from 'next/dist/server/render';
+
 import React from 'react'
-import { FieldValues, useForm } from 'react-hook-form';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { Button } from '@/app/components/buttons';
 
 const NoteForm = () => {
@@ -20,13 +19,19 @@ const NoteForm = () => {
             categories: [], 
             image: ''
         }
-    })
+    });
+    const onSubmit: SubmitHandler<FieldValues> = (data)=>{
+        if(data){
+            return;
+        }
+        return;
+    }
   return (
     <div>
         <div>
             <h1>Note</h1>
         </div>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <FormInput id='title' label='Title' register={register} errors={errors} />
                 <FormTextarea id='description' label='Description' register={register} errors={errors} />

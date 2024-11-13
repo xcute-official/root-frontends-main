@@ -9,6 +9,7 @@ export const getUserByUsername = async (username: string)=>{
         });
         return user;
     }catch(error){
+        console.log(error);
         return null;
     }
 }
@@ -21,6 +22,7 @@ export const getUserById = async (id: string)=>{
         });
         return user;
     }catch(error){
+        console.log(error);
         return null;
     }
 }

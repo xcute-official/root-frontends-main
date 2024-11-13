@@ -1,3 +1,4 @@
+import Image from "@tiptap/extension-image";
 import StarterKit from "@tiptap/starter-kit";
 
 const EditorExtensions = [
@@ -7,6 +8,11 @@ const EditorExtensions = [
                 class: ''
             }
         },
+    }),
+    Image.configure({
+        HTMLAttributes: {
+            class: 'w-52 h-auto'
+        }
     })
 ]
 export default EditorExtensions;

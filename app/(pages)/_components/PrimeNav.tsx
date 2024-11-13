@@ -20,13 +20,19 @@ const pages: Page[]=[
     icon: <TbSmartHome className={clsx(
       ICON_S_SIZE
     )}/>
+  },{
+    text: 'signin',
+    href: '/authenticating/signin',
+  },{
+    text: 'note',
+    href: '/lggdn/user/notes/id/content',
   }
 ]
 
 
 const PrimeNav = () => {
   return (
-    <nav className='flex items-center justify-between w-full px-4 py-4'>
+    <nav className='flex items-center justify-between w-full px-4 bg-background'>
       <div className='flex items-center gap-2'>
         <TbCode className={ICON_S_SIZE} />
         <span>xcute</span>
