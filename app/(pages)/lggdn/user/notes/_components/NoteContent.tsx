@@ -56,7 +56,7 @@ export const NoteContent = ()=>{
                     )
                 }
             </Modal>
-            <div className="w-full flex absolute top-20 right-0">
+            <div className="w-full flex absolute top-20">
               <NoteContentToolbar setShow={(showing: boolean)=>setShow(showing)} setModalState={(state: string)=>setModalState(state)} editor={editor} savingState={false}/>
             </div>
             <div className="md:px-16 mt-20">
